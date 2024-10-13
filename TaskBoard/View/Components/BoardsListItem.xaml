@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="TaskBoard.View.Components.BoardsListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TaskBoard.View.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="90" d:DesignWidth="500">
+    <UserControl.Resources>
+        <Style x:Key="SMainBorder" TargetType="Border">
+            <Setter Property="Margin" Value="10, 10, 10, 5"/>
+            <Setter Property="Height" Value="60"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Height" Value="66"/>
+                    <Setter Property="Margin" Value="7, 7, 7, 2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="SRemoveBorderButton" TargetType="Button">
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Content">
+                <Setter.Value>
+                    <Image Source="{StaticResource remove_gray_bold_icon}"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Padding" Value="17"/>
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <Image Source="{StaticResource remove_red_bold_icon}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Border Style="{StaticResource SMainBorder}"
+            Background="White"
+            CornerRadius="10"
+            Cursor="Hand">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0"
+                              BlurRadius="15"
+                              Opacity="0.1"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.25*"/>
+            </Grid.ColumnDefinitions>
+            <Button Template="{StaticResource ButtonTemplate}"
+                    Background="Transparent"
+                    HorizontalAlignment="Left"
+                    Margin="10"
+                    Content="Border name"
+                    FontSize="22"
+                    FontWeight="SemiBold"/>
+            <Button x:Name="RemoveBorderButton"
+                    Template="{StaticResource ButtonTemplate}"
+                    Style="{StaticResource SRemoveBorderButton}"
+                    Background="Transparent"
+                    Grid.Column="1"/>
+        </Grid>
+    </Border>
+</UserControl>

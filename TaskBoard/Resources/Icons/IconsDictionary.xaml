@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <ImageSource x:Key="edit_card_black_icon">Edit/edit_black.png</ImageSource>
+    <ImageSource x:Key="edit_card_blue_icon">Edit/edit_blue.png</ImageSource>
+
+    <ImageSource x:Key="remove_card_black_icon">Remove/remove_black.png</ImageSource>
+    <ImageSource x:Key="remove_card_red_icon">Remove/remove_red.png</ImageSource>
+    <ImageSource x:Key="remove_red_bold_icon">Remove/remove_red_bold.png</ImageSource>
+    <ImageSource x:Key="remove_gray_icon">Remove/remove_gray.png</ImageSource>
+    <ImageSource x:Key="remove_gray_bold_icon">Remove/remove_gray_bold.png</ImageSource>
+    
+    <ImageSource x:Key="plus_icon">plus_icon.png</ImageSource>
+</ResourceDictionary>

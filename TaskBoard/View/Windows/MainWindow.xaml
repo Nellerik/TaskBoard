@@ -1,0 +1,144 @@
+﻿<Window x:Class="TaskBoard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskBoard" 
+        xmlns:c="clr-namespace:TaskBoard.View.Components"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1080" Width="1920" WindowState="Maximized">
+    <Window.Resources>
+        <Style x:Key="SCreateBoardButtonBorder" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Margin" Value="10, 10, 10, 10"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="0"
+                                      BlurRadius="20"
+                                      Opacity="0.1"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Margin" Value="7, 7, 7, 7"/>
+                    <Setter Property="Height" Value="46"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="SCreateBoardButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="0, 10"/>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="MainGrid" Background="#F7F8FA">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition/>
+            <RowDefinition Height="15"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.07*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock FontSize="40"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left"
+                           Background="Transparent">
+                    <Run Foreground="{StaticResource Yellow100}">D</Run><Run Foreground="{StaticResource Pink100}">a</Run><Run Foreground="{StaticResource Violet100}">s</Run><Run Foreground="{StaticResource Green100}">h</Run><Run>board</Run>
+                </TextBlock>
+                <Rectangle Height="1"
+                           Fill="#CCCCCC"
+                           Margin="0, 5, 0, 0"/>
+            </StackPanel>
+
+            <ScrollViewer VerticalScrollBarVisibility="Visible"
+                          Grid.Row="1">
+                <StackPanel>
+                    <StackPanel Margin="0, 5">
+                        <c:BoardsListItem/>
+                        <c:BoardsListItem/>
+                        <c:BoardsListItem/>
+                    </StackPanel>
+                    <Border Style="{StaticResource SCreateBoardButtonBorder}">
+                        <Button x:Name="CreateBoardButton"
+                        Template="{StaticResource ButtonTemplate}"
+                        Style="{StaticResource SCreateBoardButton}">
+                            <Image Source="{StaticResource plus_icon}"/>
+                        </Button>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+
+        </Grid>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock FontSize="40"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Left"
+                           Background="Transparent">
+                    <Run Foreground="{StaticResource Yellow100}">D</Run><Run Foreground="{StaticResource Pink100}">a</Run><Run Foreground="{StaticResource Violet100}">s</Run><Run Foreground="{StaticResource Green100}">h</Run><Run>board</Run>
+            </TextBlock>
+            <Rectangle Height="1"
+                           Fill="#CCCCCC"
+                           Margin="0, 5, 0, 0"/>
+        </StackPanel>
+
+        <Rectangle Fill="#CCCCCC"
+                   Grid.Column="2" Grid.RowSpan="3"
+                   Width="1"
+                   HorizontalAlignment="Center"
+                   Margin="0, 15"/>
+        <Grid Grid.Column="3" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="First Board"
+                       FontSize="60"
+                       FontWeight="Bold"
+                       Grid.ColumnSpan="7"
+                       VerticalAlignment="Center"
+                       Margin="15, 0, 0, 0"/>
+            <c:TasksStack Grid.Row="1" Grid.RowSpan="2"
+                          Title="Backlog Tasks"
+                          BackgroundColor="{StaticResource Yellow15}"
+                          TextColor="{StaticResource Yellow100}"/>
+            <c:TasksStack Grid.Row="1" Grid.RowSpan="2" Grid.Column="2"
+                          Title="To Do Tasks"
+                          BackgroundColor="{StaticResource Pink15}"
+                          TextColor="{StaticResource Pink100}"/>
+            <c:TasksStack Grid.Row="1" Grid.RowSpan="2" Grid.Column="4"
+                          Title="In Progress"
+                          BackgroundColor="{StaticResource Violet15}"
+                          TextColor="{StaticResource Violet100}"/>
+            <c:TasksStack Grid.Row="1" Grid.RowSpan="2" Grid.Column="6"
+                          Title="Done"
+                          BackgroundColor="{StaticResource Green15}"
+                          TextColor="{StaticResource Green100}"/>
+        </Grid>
+    </Grid>
+</Window>

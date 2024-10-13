@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\Edit\edit_black.png" />
+    <None Remove="Resources\Icons\Edit\edit_blue.png" />
+    <None Remove="Resources\Icons\plus_icon.png" />
+    <None Remove="Resources\Icons\Remove\remove_black.png" />
+    <None Remove="Resources\Icons\Remove\remove_gray.png" />
+    <None Remove="Resources\Icons\Remove\remove_gray_bold.png" />
+    <None Remove="Resources\Icons\Remove\remove_red.png" />
+    <None Remove="Resources\Icons\Remove\remove_red_bold.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Edit\edit_black.png" />
+    <Resource Include="Resources\Icons\Edit\edit_blue.png" />
+    <Resource Include="Resources\Icons\plus_icon.png" />
+    <Resource Include="Resources\Icons\Remove\remove_black.png" />
+    <Resource Include="Resources\Icons\Remove\remove_gray.png" />
+    <Resource Include="Resources\Icons\Remove\remove_gray_bold.png" />
+    <Resource Include="Resources\Icons\Remove\remove_red.png" />
+    <Resource Include="Resources\Icons\Remove\remove_red_bold.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\Data\" />
+  </ItemGroup>
+
+</Project>
