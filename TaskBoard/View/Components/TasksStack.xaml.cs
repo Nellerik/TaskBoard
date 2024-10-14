@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TaskBoard.Model;
+using TaskBoard.View.Windows;
 
 namespace TaskBoard.View.Components
 {
@@ -21,8 +22,12 @@ namespace TaskBoard.View.Components
     /// </summary>
     public partial class TasksStack : UserControl
     {
-        public ObservableCollection<Model.Task> Tasks { get; set; } = new ObservableCollection<Model.Task>();
-
+        public int Id {  get; set; }
+        public static readonly DependencyProperty TasksProperty =
+            DependencyProperty.Register(
+                "Tasks",
+                typeof(ObservableCollection<Model.Task>),
+                typeof(TasksStack));
         public string Title { get; set; }
         public static readonly DependencyProperty TextColorProperty =
             DependencyProperty.Register(
@@ -34,6 +39,11 @@ namespace TaskBoard.View.Components
                 "BackgroundColor",
                 typeof(SolidColorBrush),
                 typeof(TasksStack));
+        public ObservableCollection<Model.Task> Tasks
+        {
+            get { return (ObservableCollection<Model.Task>)GetValue(TasksProperty); }
+            set { SetValue(TasksProperty, value); }
+        }
         public SolidColorBrush TextColor
         {
             get { return (SolidColorBrush)GetValue(TextColorProperty); }
@@ -44,11 +54,21 @@ namespace TaskBoard.View.Components
             get { return (SolidColorBrush)GetValue(BackgroundColorProperty); }
             set { SetValue(BackgroundColorProperty, value); }
         }
+
+        public ICommand UpdateItem
+        {
+            get { return (ICommand)GetValue(UpdateItemProperty); }
+            set { SetValue(UpdateItemProperty, value); }
+        }
+        public static readonly DependencyProperty UpdateItemProperty =
+            DependencyProperty.Register(
+                "UpdateItem",
+                typeof(ICommand),
+                typeof(TasksStack));
+
         public TasksStack()
         {
             InitializeComponent();
-            Tasks.Add(new Model.Task { Title = "Title1", Description = "Description 1" });
-            this.DataContext = this;
         }
 
         private void StackPanel_DragOver(object sender, DragEventArgs e)
@@ -70,18 +90,8 @@ namespace TaskBoard.View.Components
         {
             if (e.Handled == false)
             {
-                ItemsControl _panel = (ItemsControl)sender;
                 TaskCard _element = (TaskCard)e.Data.GetData("Object");
-
-                if (_panel != null && _element != null)
-                {
-                    ItemsControl _parent = FindParent<ItemsControl>(_element);
-                    ObservableCollection<Model.Task> parentTasks = _parent.ItemsSource as ObservableCollection<Model.Task>;
-                    Model.Task _elementModel = parentTasks.FirstOrDefault((e) => e.Title == _element.Title);
-                    parentTasks.Remove(_elementModel);
-                    (_panel.ItemsSource as ObservableCollection<Model.Task>).Add(_elementModel);
-                    e.Effects = DragDropEffects.Move;
-                }
+                UpdateItem.Execute(new Model.Task() { Id = _element.Id, TaskStateId = Id});
             }
         }
 

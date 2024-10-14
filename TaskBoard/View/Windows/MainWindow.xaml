@@ -126,19 +126,31 @@
             <c:TasksStack Grid.Row="1" Grid.RowSpan="2"
                           Title="Backlog Tasks"
                           BackgroundColor="{StaticResource Yellow15}"
-                          TextColor="{StaticResource Yellow100}"/>
+                          TextColor="{StaticResource Yellow100}"
+                          Tasks="{Binding BacklogTasks}"
+                          UpdateItem="{Binding EditTaskCommand}"
+                          Id="1"/>
             <c:TasksStack Grid.Row="1" Grid.RowSpan="2" Grid.Column="2"
                           Title="To Do Tasks"
                           BackgroundColor="{StaticResource Pink15}"
-                          TextColor="{StaticResource Pink100}"/>
+                          TextColor="{StaticResource Pink100}"
+                          Tasks="{Binding ToDoTasks}"
+                          UpdateItem="{Binding EditTaskCommand}"
+                          Id="2"/>
             <c:TasksStack Grid.Row="1" Grid.RowSpan="2" Grid.Column="4"
                           Title="In Progress"
                           BackgroundColor="{StaticResource Violet15}"
-                          TextColor="{StaticResource Violet100}"/>
+                          TextColor="{StaticResource Violet100}"
+                          Tasks="{Binding InProgressTasks}"
+                          UpdateItem="{Binding EditTaskCommand}"
+                          Id="3"/>
             <c:TasksStack Grid.Row="1" Grid.RowSpan="2" Grid.Column="6"
                           Title="Done"
                           BackgroundColor="{StaticResource Green15}"
-                          TextColor="{StaticResource Green100}"/>
+                          TextColor="{StaticResource Green100}"
+                          Tasks="{Binding DoneTasks}"
+                          UpdateItem="{Binding EditTaskCommand}"
+                          Id="4"/>
         </Grid>
     </Grid>
 </Window>

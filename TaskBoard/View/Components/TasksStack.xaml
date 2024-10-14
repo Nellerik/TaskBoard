@@ -45,15 +45,15 @@
         <StackPanel Grid.Row="0" 
                     Orientation="Horizontal"
                     VerticalAlignment="Center">
-            <TextBlock Text="{Binding Title}"
+            <TextBlock Text="{Binding Title, RelativeSource={RelativeSource AncestorType=local:TasksStack}}"
                        Style="{StaticResource STasksStateTextBlock}"
                        Grid.Row="1"/>
             <Border Height="35"
                 Width="35"
                 CornerRadius="17"
                 Margin="5, 0, 0, 0"
-                Background="{Binding BackgroundColor}">
-                <TextBlock Foreground="{Binding TextColor}"
+                Background="{Binding BackgroundColor, RelativeSource={RelativeSource AncestorType=local:TasksStack}}">
+                <TextBlock Foreground="{Binding TextColor, RelativeSource={RelativeSource AncestorType=local:TasksStack}}"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Margin="0, 0, 0, 2"
@@ -75,11 +75,12 @@
                             DragOver="StackPanel_DragOver"
                             Drop="StackPanel_Drop"
                             Grid.Row="2"
-                          ItemsSource="{Binding Path=Tasks}">
+                          ItemsSource="{Binding Path=Tasks, RelativeSource={RelativeSource AncestorType=UserControl}}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <local1:TaskCard Title="{Binding Path=Title}"
                                          Description="{Binding Path=Description}"
+                                         Id="{Binding Path=Id}"
                                          HorizontalAlignment="Left"
                                          Margin="10, 10, 0, 0"/>
                     </DataTemplate>
