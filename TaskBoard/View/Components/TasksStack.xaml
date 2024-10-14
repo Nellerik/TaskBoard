@@ -16,7 +16,7 @@
             <Setter Property="Margin" Value="15, 0, 0, 0"/>
         </Style>
         <Style x:Key="SAddTaskButton" TargetType="Button">
-            <Setter Property="Margin" Value="18"/>
+            <Setter Property="Margin" Value="14"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="FontSize" Value="25"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -27,12 +27,12 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Margin" Value="14"/>
+                    <Setter Property="Margin" Value="10"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Grid MinWidth="380" MinHeight="260">
+    <Grid MinWidth="300" MinHeight="260">
         <Grid.RowDefinitions>
             <RowDefinition Height="90"/>
             <RowDefinition />
@@ -79,7 +79,9 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <local1:TaskCard Title="{Binding Path=Title}"
-                                         Description="{Binding Path=Description}"/>
+                                         Description="{Binding Path=Description}"
+                                         HorizontalAlignment="Left"
+                                         Margin="10, 10, 0, 0"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

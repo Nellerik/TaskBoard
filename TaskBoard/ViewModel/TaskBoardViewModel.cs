@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaskBoard.ViewModel
 {
-    public class ViewModel
+    public class TaskBoardViewModel
     {
     }
 }

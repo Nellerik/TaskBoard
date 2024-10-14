@@ -18,7 +18,7 @@
             </Style.Triggers>
         </Style>
         <Style x:Key="SRemoveBorderButton" TargetType="Button">
-            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Padding" Value="15"/>
             <Setter Property="Content">
                 <Setter.Value>
                     <Image Source="{StaticResource remove_gray_bold_icon}"/>
@@ -26,7 +26,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Padding" Value="17"/>
+                    <Setter Property="Padding" Value="12"/>
                     <Setter Property="Content">
                         <Setter.Value>
                             <Image Source="{StaticResource remove_red_bold_icon}"/>
@@ -48,14 +48,14 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="0.3*"/>
             </Grid.ColumnDefinitions>
             <Button Template="{StaticResource ButtonTemplate}"
                     Background="Transparent"
                     HorizontalAlignment="Left"
                     Margin="10"
                     Content="Border name"
-                    FontSize="22"
+                    FontSize="18"
                     FontWeight="SemiBold"/>
             <Button x:Name="RemoveBorderButton"
                     Template="{StaticResource ButtonTemplate}"
