@@ -9,6 +9,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TaskBoard.ViewModel;
 
 namespace TaskBoard
 {
@@ -21,6 +22,7 @@ namespace TaskBoard
         {
             InitializeComponent();
             mainGrid = MainGrid;
+            DataContext = new TaskBoardViewModel();
         }
 
         private void StackPanel_DragOver(object sender, DragEventArgs e)

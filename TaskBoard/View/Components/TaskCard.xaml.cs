@@ -24,10 +24,17 @@ namespace TaskBoard
     /// </summary>
     public partial class TaskCard : UserControl
     {
+        public static readonly DependencyProperty IdProperty =
+            DependencyProperty.Register("Id", typeof(int), typeof(TaskCard));
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(TaskCard));
         public static readonly DependencyProperty DescriptionProperty =
             DependencyProperty.Register("Description", typeof(string), typeof(TaskCard));
+        public int Id
+        {
+            get { return (int)GetValue(IdProperty); }
+            set { SetValue(IdProperty, value); }
+        }
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }

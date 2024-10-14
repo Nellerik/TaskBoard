@@ -79,12 +79,12 @@
                 <Button x:Name="EditCardButton"
                         Template="{StaticResource ButtonTemplate}"
                         Style="{StaticResource SEditCardButton}"
-                        Click="EditButton_Click"
                         Grid.Column="2" Grid.Row="1"/>
                 <Button x:Name="RemoveCardButton"
                         Template="{StaticResource ButtonTemplate}"
                         Style="{StaticResource SRemoveCardButton}"
-                        Click="RemoveButton_Click"
+                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}, Path=DataContext.RemoveTaskCommand}"
+                        CommandParameter="{Binding ElementName=TaskCardUC}"
                         Grid.Column="3" Grid.Row="1"/>
                 <TextBlock x:Name="CardTitle"
                            Grid.Column="1" Grid.Row="1"
