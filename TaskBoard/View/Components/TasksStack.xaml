@@ -8,6 +8,7 @@
              xmlns:wins="clr-namespace:TaskBoard.View.Windows"
              xmlns:models="clr-namespace:TaskBoard.Model"
              mc:Ignorable="d" 
+             x:Name="TaskStackUC"
              d:DesignHeight="1000" d:DesignWidth="380">
     <UserControl.Resources>
         <Style x:Key="STasksStateTextBlock" TargetType="TextBlock">
@@ -68,7 +69,8 @@
                 Grid.Column="1"
                 Template="{StaticResource ButtonTemplate}"
                 Style="{StaticResource SAddTaskButton}"
-                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local1:MainWindow}}, Path=DataContext.AddTaskCommand}"/>
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local1:MainWindow}}, Path=DataContext.AddTaskCommand}"
+                CommandParameter="{Binding Path=Id, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
         <ScrollViewer Grid.Row="2" Grid.ColumnSpan="2"
                       VerticalScrollBarVisibility="Auto">
             <ItemsControl x:Name="TasksPanel"

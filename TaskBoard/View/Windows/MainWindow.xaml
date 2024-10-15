@@ -68,15 +68,20 @@
             <ScrollViewer VerticalScrollBarVisibility="Visible"
                           Grid.Row="1">
                 <StackPanel>
-                    <StackPanel Margin="0, 5">
-                        <c:BoardsListItem/>
-                        <c:BoardsListItem/>
-                        <c:BoardsListItem/>
-                    </StackPanel>
+                    <ItemsControl Margin="0, 5"
+                                  ItemsSource="{Binding boards}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <c:BoardsListItem Title="{Binding Title}"
+                                                  Id="{Binding Id}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                     <Border Style="{StaticResource SCreateBoardButtonBorder}">
                         <Button x:Name="CreateBoardButton"
-                        Template="{StaticResource ButtonTemplate}"
-                        Style="{StaticResource SCreateBoardButton}">
+                                Template="{StaticResource ButtonTemplate}"
+                                Style="{StaticResource SCreateBoardButton}"
+                                Command="{Binding CreateBoardCommand}">
                             <Image Source="{StaticResource plus_icon}"/>
                         </Button>
                     </Border>

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TaskBoard.View.Components"
+             xmlns:local1="clr-namespace:TaskBoard"
              mc:Ignorable="d" 
              d:DesignHeight="90" d:DesignWidth="500">
     <UserControl.Resources>
@@ -48,18 +49,20 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="55"/>
             </Grid.ColumnDefinitions>
             <Button Template="{StaticResource ButtonTemplate}"
                     Background="Transparent"
                     HorizontalAlignment="Left"
                     Margin="10"
-                    Content="Border name"
+                    Content="{Binding Title}"
                     FontSize="18"
                     FontWeight="SemiBold"/>
             <Button x:Name="RemoveBorderButton"
                     Template="{StaticResource ButtonTemplate}"
                     Style="{StaticResource SRemoveBorderButton}"
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local1:MainWindow}}, Path=DataContext.RemoveBoardCommand}"
+                    CommandParameter="{Binding Id, RelativeSource={RelativeSource AncestorType=UserControl}}"
                     Background="Transparent"
                     Grid.Column="1"/>
         </Grid>
