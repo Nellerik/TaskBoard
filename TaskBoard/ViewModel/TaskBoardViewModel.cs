@@ -36,6 +36,11 @@ namespace TaskBoard.ViewModel
                 return _addTaskCommand ??
                     (_addTaskCommand = new RelayCommand((o) =>
                     {
+                        CreateTaskWindow window = new CreateTaskWindow();
+                        if(window.ShowDialog() == true)
+                        {
+
+                        }
                         //TODO
                     }
                     ));
