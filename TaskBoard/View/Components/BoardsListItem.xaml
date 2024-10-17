@@ -37,7 +37,8 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Border Style="{StaticResource SMainBorder}"
+    <Border x:Name="MainBoard"
+            Style="{StaticResource SMainBorder}"
             Background="White"
             CornerRadius="10"
             Cursor="Hand">
@@ -48,14 +49,17 @@
         </Border.Effect>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition x:Name="SelectButtonColumn" Width="*"/>
                 <ColumnDefinition Width="55"/>
             </Grid.ColumnDefinitions>
             <Button Template="{StaticResource ButtonTemplate}"
                     Background="Transparent"
-                    HorizontalAlignment="Left"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Left"
                     Margin="10"
                     Content="{Binding Title}"
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local1:MainWindow}}, Path=DataContext.SelectBoardCommand}"
+                    CommandParameter="{Binding Id}"
                     FontSize="18"
                     FontWeight="SemiBold"/>
             <Button x:Name="RemoveBorderButton"

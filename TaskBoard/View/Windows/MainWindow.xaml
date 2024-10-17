@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskBoard" 
         xmlns:c="clr-namespace:TaskBoard.View.Components"
+        xmlns:converters="clr-namespace:TaskBoard.ViewModel.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920" WindowState="Maximized">
     <Window.Resources>
@@ -32,6 +33,7 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Margin" Value="0, 10"/>
         </Style>
+        <converters:HideWhenEmptyConverter x:Key="HideWhenEmptyConverter"/>
     </Window.Resources>
     <Grid x:Name="MainGrid" Background="#F7F8FA">
         <Grid.ColumnDefinitions>
@@ -64,12 +66,11 @@
                            Fill="#CCCCCC"
                            Margin="0, 5, 0, 0"/>
             </StackPanel>
-
             <ScrollViewer VerticalScrollBarVisibility="Visible"
                           Grid.Row="1">
                 <StackPanel>
                     <ItemsControl Margin="0, 5"
-                                  ItemsSource="{Binding boards}">
+                                  ItemsSource="{Binding Boards}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <c:BoardsListItem Title="{Binding Title}"
@@ -87,7 +88,6 @@
                     </Border>
                 </StackPanel>
             </ScrollViewer>
-
         </Grid>
 
         <StackPanel Grid.Row="1" Grid.Column="1">
@@ -107,7 +107,7 @@
                    Width="1"
                    HorizontalAlignment="Center"
                    Margin="0, 15"/>
-        <Grid Grid.Column="3" Grid.Row="1">
+        <Grid Grid.Column="3" Grid.Row="1" Visibility="{Binding Boards.Count, Converter={StaticResource HideWhenEmptyConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="0.1*"/>
@@ -122,12 +122,13 @@
                 <ColumnDefinition Width="10"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="First Board"
+            <TextBlock Text="{Binding Path=Title}"
                        FontSize="60"
                        FontWeight="Bold"
                        Grid.ColumnSpan="7"
                        VerticalAlignment="Center"
-                       Margin="15, 0, 0, 0"/>
+                       Margin="15, 0, 0, 0"
+                       DataContext="{Binding Path=CurrentBoard}"/>
             <c:TasksStack Grid.Row="1" Grid.RowSpan="2"
                           Title="Backlog Tasks"
                           BackgroundColor="{StaticResource Yellow15}"
